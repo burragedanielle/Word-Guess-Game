@@ -1,7 +1,23 @@
-body {
-    font-family: 'Nanum Gothic', sans-serif;
+/* body {
+    background-image: url('/assets/Images/background.png');
+    
 }
 
-h1 {
-    font-family: 'Black Han Sans', sans-serif;
+/* container {
+    grid-template-columns: 25% 25% auto;
+    grid-template-rows: 25% 300px auto;
+
+
+} */
+
+/* .head-logo {
+    height: 300px;
+    float: right;
 }
+
+#missing-word-static {
+    color: #fff;
+    box-shadow: 2px;
+
+
+}  */

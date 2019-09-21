@@ -1,21 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta Tags Below -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
 
+    <!-- CSS Scripts Below 
+    -->
+
+    <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Nanum+Gothic&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./assets/CSS/style.css">
+
+
+    <!-- Page Tilte Below -->
+    <title>7 Rings Lyrics Game</title>
 </head>
+
 <body>
+    <container>
+        <!-- <img class="head-logo" src="assets/Images/7rings_LOGO.png" alt="7 Rings Logo"> -->
+        
+        <h2>Press Any Key To Start</h2>
 
-    <div id="hint-lyric"></div>
+        <!-- This is where user will see the lyric appear -->
 
-    <div id="missing-lyric-home"></div>
+        <h3 id="missing-word-static">missing word?</h3>
+
+        <div id="hint-lyric"></div>
+        <div id="missing-word"></div>
+
+        <div id='picked-letters'></div>
+        <div id='wins'></div>
+        <div id='round'></div>
+        <div id='guesses-remaining'></div>
+    </container>
 
 
-    
+ <!-- JavaScript Below -->
+ <script src="./assets/JavaScript/test.js"></script>
 
-    <script src ="./assets/JavaScript/testing.js"></script>       
 </body>
 </html>

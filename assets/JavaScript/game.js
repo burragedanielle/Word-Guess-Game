@@ -1,116 +1,159 @@
-//PSEUDO CODE IT
-
-// 1. Lyrics to feed into game, including missing lyric, hint lyrics and blank spaces for missing lyric. 
-
 var lyrics = [
     {
         missing: "bubbles",
-        hintLyric: "Breakfast at Tiffany's and bottles of _ _ _ _ _ _ _ ",
-        displayedWord: "_______"
+        hintLyric: "Breakfast at Tiffany's and bottles of XXXXXXX"
     },
 
     {
-        missing: "tatoos",
-        hintLyric: "Girls with _ _ _ _ _ _ _  who like getting in trouble",
-        displayedWord: "______"
+        missing: "tattoos",
+        hintLyric: "Girls with XXXXXXX who like getting in trouble"
 
     },
 
     {
         missing: "diamonds",
-        hintLyric: "Lashes and _ _ _ _ _ _ _ _, ATM machines",
-        displayedWord: "________"
+        hintLyric: "Lashes and XXXXXXXX, ATM machines"
 
     },
 
     {
         missing: "favorite",
-        hintLyric: "Buy myself all of my _ _ _ _ _ _ _ _ things",
-        displayedWord: "________"
+        hintLyric: "Buy myself all of my XXXXXXXX things"
 
     },
 
     {
         missing: "sad",
-        hintLyric: "Been through some bad shit, I should be a _ _ _ bitch",
-        displayedWord: "___"
-
+        hintLyric: "Been through some bad shit, I should be a XXX bitch"
     },
 
     {
         missing: "savage",
-        hintLyric: "Who woulda thought it'd turn me to a _ _ _ _ _ _ ",
-        displayedWord: "______"
-
+        hintLyric: "Who woulda thought it'd turn me to a XXXXXX"
     },
 
     {
         missing: "calls",
-        hintLyric: "Rather be tied up with _ _ _ _ _ and not strings",
-        displayedWord: "_____"
-
+        hintLyric: "Rather be tied up with XXXXX and not strings"
     },
 
     {
         missing: "checks",
-        hintLyric: "Write my own _ _ _ _ _ _ like I write what I sing, yeah",
-        displayedWord: "______"
-
+        hintLyric: "Write my own XXXXXX like I write what I sing, yeah"
     },
 
 
 ]
 
+//variables 
 
-
-// 2. game variables
-     
-var round = 0;
+var round = 0; 
 var wins = 0;
-var pickedLetters = []; // an array of guesses user has made already in round
-//use this to slowly display the word as the user types it out // if i use object have the game replace this with displayBlanks. 
-var userGuessesRemaining = 7;
-var userCorrect = [];
-var userGuess = "q";
+var pickedLetters = [];
+var userRemainingGuesses = 7; 
+wordTokens = [];
 
-//3. check letters fuction 
+//functions
 
-// 4. reset function 
+function renderHintLyric () {
+    var renderHint = lyrics[round].hintLyric;
+
+    if(round <= lyrics.length) {
+        document.getElementById('hint-lyric').innerHTML = lyrics[round].hintLyric;
+    }
+}
+
+function renderMissingWord() {
+    var missingWord = lyrics[round].missing;
     
+    for(var i = 0; i < missingWord.length; i++) {
+        wordTokens.push(" _ ");
+        var displayedWordTokens = wordTokens.join("  ");
+        document.getElementById('missing-word').innerHTML = displayedWordTokens;
+    }
+}
 
-// ***********
+function updateScore () {
+    document.getElementById('wins').innerHTML = wins; 
+    document.getElementById('round').innerHTML = round + 1;
+    var displayPickedLetters = pickedLetters.join("  ");
+    document.getElementById('picked-letters').innerHTML = displayPickedLetters;
+    document.getElementById('guesses-remaining').innerHTML = userRemainingGuesses;   
+}
 
-// 1. Start the game using any key. 
+function clearBoard(){
+    wordTokens = [];
+    pickedLetters = [];
+    renderMissingWord();
+    renderHintLyric();
+    var displayPickedLetters = pickedLetters.join("  ");
+    document.getElementById('picked-letters').innerHTML = displayPickedLetters;
+    document.getElementById('guesses-remaining').innerHTML = userRemainingGuesses;   
+}
 
-document.on("click", function() {}
-
-
-
-
-
-
-
-
-
-
-
-
-
-)
-
-
-// 2. User presses letters (see the fridge game) to guess words. 
-
-     
-// 3. As user guesses, the game checks letters 
-
-checkLetters();
-
-//4. Display user's already guessed letters in div "user-guessed-letters"
-
+function reset(){
+    wins = 0;
+    round = 0;
+    wordTokens = [];
+    pickedLetters = [];
+    userRemainingGuesses = 7;
+    renderHintLyric();
+    renderMissingWord();
+    updateScore();
+}
 
 
-// 5. When user guesses entire correct word, game moves to next "round" or the next lyric in the song.
+//***** GAME BEGINS *******//
+
+renderHintLyric();
+renderMissingWord();
+updateScore();
 
 
-//6. User gets 7 chances to guess the letters in each word. After 7 guesses, they lose and receive a message that says 'Thank U, Next. You Lost!' and game resets. 
+document.onkeyup = function(event) {
+    userGuess = event.key.toLocaleLowerCase();
+
+    var missingWord = lyrics[round].missing;
+    console.log(missingWord);
+
+    // game begins checking letters
+
+    //if user is wrong
+    if (missingWord.indexOf(userGuess) === -1 && pickedLetters.indexOf(userGuess) === -1) {
+        userRemainingGuesses--
+        console.log(userRemainingGuesses);
+    
+        pickedLetters.push(userGuess); 
+        var displayPickedLetters = pickedLetters.join("  ");
+        console.log(displayPickedLetters);
+
+        updateScore();
+
+        if (userRemainingGuesses === 0) {
+            alert('Thank u, next! You lost!');
+            reset();
+        }
+    }
+
+    //if user is right
+    else if (missingWord.indexOf(userGuess) !== -1 && pickedLetters.indexOf(userGuess) === -1) {
+        
+        for (let i = 0; i < missingWord.length; i++) {
+            if (missingWord[i] === userGuess) {
+            wordTokens[i] = missingWord[i];
+            }
+        }
+       
+        var displayedWordTokens = wordTokens.join("  ");
+        document.getElementById('missing-word').innerHTML = displayedWordTokens;
+
+        //if user guesses all words right
+        if (wordTokens.indexOf(" _ ") === -1) {
+            alert("It feels so good to be successful! You Won!")
+            round++
+            wins++
+            clearBoard();
+        }
+                 
+    }
+}

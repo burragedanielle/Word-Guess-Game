@@ -67,7 +67,15 @@ var wins = 0;
 var pickedLetters = []; // an array of guesses user has made already in round
 //use this to slowly display the word as the user types it out // if i use object have the game replace this with displayBlanks. 
 var userGuessesRemaining = 7;
-userGuess = "i";
+var userGuess = "";
+dashes = [];
+
+wordTokens = [];
+
+wordTokens.join(" ");
+
+// for each letter in word
+// push _ into wordTokens;
 
 function reset(){
     rounds = 0;
@@ -76,6 +84,32 @@ function reset(){
     userGuessesRemaining = 0; 
 
 }
+
+function displayHintLyric(){
+    var hintLyric = lyrics[round].hintLyric;
+    console.log(hintLyric);
+    document.getElementById("hint-lyric").innerHTML = hintLyric;
+};
+
+function displayMissingLyric(){
+    displayedWord = lyrics[round].displayedWord;
+    document.getElementById('displayed-word').innerHTML = displayedWord;   
+}
+
+/* this code here is from classmate his way of getting the dashes to appear and replace by user guesses  */
+
+// function testingScript() {
+//     var currentWord = lyrics[round].missing;
+    
+//     splitWord = currentWord.split("");
+    
+//     for (var i = 0; i < splitWord.length; i++) {
+//         dashes.push("_");
+//     }; 
+//     console.log(splitWord);
+
+//     document.getElementById('displayed-word').innerHTML = splitWord;
+// }
 
 //user guess type any letter 
 function checkLetters() {
@@ -97,16 +131,13 @@ function checkLetters() {
             
             //it tosses user guess into pickedLetters 
             pickedLetters.push(userGuess); 
-
             console.log(pickedLetters);
             
             //and removes one guess from the 7 user guesses remaining
             userGuessesRemaining-- 
-            
         } 
 
         if (userGuessesRemaining === 0) {
-
             reset();
             alert('Thank u, next! You lost!');
         }
@@ -127,40 +158,53 @@ function checkLetters() {
 
             for (let i = 0; i < missingLyric.length; i++) {
                 if (missingLyric[i] === userGuess) {
-                    displayedWord = displayedWord.substring(0, i) + userGuess + displayedWord.substring(i + 1);
-                    
-                    console.log(displayedWord);
-                    //show displayedWord in the DOM 
+                    wordTokens[i]= missingLyric[i];
+                    // displayedWord = displayedWord.substring(0, i) + userGuess + displayedWord.substring(i + 1);  
                 }
+
+                // update display
             }
 
-            if(displayedWord.indexOf("_") === -1) {
+            if (wordTokens.indexOf("_") === -1) {
                 wins++;
-                round++;
-                }
+                round++;                     
+            }
         }
         
-        pickedLetters = []; // the letters the user has picked
-
-    console.log(wins);
-    console.log(round);
-    console.log(userGuessesRemaining);
-    console.log(userGuess);
-    console.log(pickedLetters);
+        pickedLetters = []; 
+        
 } 
 
 
-checkLetters();
 
-// document.onkeyup = function() {
 
-//     document.body.addEventListener('keyup', function(event){
-//         var userGuess = (event.key); 
-//         console.log(userGuess);
-//     })
+// 1. Start the game using any key. 
 
-//     // var userCorrect = [];
+document.onkeyup = function(event){
 
+    userGuess = event.key.toLowerCase();
+    console.log(userGuess);
     
+    // 2. Display hint lyric
 
-// }
+    displayHintLyric();
+
+    // 3. Display blanks for lyric 
+
+    displayMissingLyric();
+    
+    // 4. User presses letters (see the fridge game) to guess words. 
+
+    // 5. As user guesses, the game checks letters 
+
+    checkLetters();
+
+    // 6. When user guesses entire correct word, game moves to next "round" or the next lyric in the song.
+
+    document.getElementById('wins').innerHTML = wins;
+    document.getElementById('round').innerHTML = round;
+
+
+    //7. User gets 7 chances to guess the letters in each word. After 7 guesses, they lose and receive a message that says 'Thank U, Next. You Lost!' and game resets. 
+
+}
