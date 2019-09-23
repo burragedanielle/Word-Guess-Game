@@ -153,7 +153,6 @@ document.onkeyup = function(event) {
             round++
             wins++
             clearBoard();
-        }
-                 
+        }           
     }
 }

@@ -1,23 +1,54 @@
-/* body {
-    background-image: url('/assets/Images/background.png');
-    
+body {
+    background-image: url('/assets/Images/background_idea2.png');
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
-/* container {
-    grid-template-columns: 25% 25% auto;
-    grid-template-rows: 25% 300px auto;
-
-
-} */
-
-/* .head-logo {
-    height: 300px;
-    float: right;
+p {
+    color: #1a002f;
+    font-size: 1em;
+    line-height: 1.25em;
 }
 
-#missing-word-static {
-    color: #fff;
-    box-shadow: 2px;
+.secondary-header {
+    font-size: 2em;
+    color: rgba(142, 240, 255, .9);
+    font-style: italic;
+    text-shadow: 3px 3px #29002f;
+}
 
+.guesses-header {
+    font-size: 1em;
+    color: #f5bbf7;
+    font-style: italic;
+}
 
-}  */
+.secondary-content {
+    color: rgb(255, 227, 251);
+    font-size: 30px;
+}
+
+.box {
+    background-color: rgba(0, 0, 0, .6);
+    width: 75%;
+    color: rgb(255, 227, 251);
+    font-size: 1.5em;
+}
+
+#hint-lyric {
+    color: #1a002f;
+    font-size: 1.75em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#missing-word {
+    font-size: 9em;
+    -webkit-text-stroke-color: rgb(255, 227, 251);
+    -webkit-text-stroke-width: 4px;
+    color: rgba(0, 0, 0, 0.1);
+    font-style: bold; 
+}
+
+.question {
+    font-size: 1em;
+}

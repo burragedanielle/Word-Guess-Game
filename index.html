@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Meta Tags Below -->
     <meta charset="UTF-8">
@@ -9,30 +10,119 @@
     <!-- CSS Scripts Below 
     -->
 
-    <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Nanum+Gothic&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400i,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <link rel="stylesheet" href="./assets/CSS/style.css">
 
-    <!-- JavaScript Below -->
-    <script src="./assets/JavaScript/game.js"></script>
-
-    <!-- Page Tilte Below -->
+    <!-- Page Title Below -->
     <title>7 Rings Lyrics Game</title>
 </head>
 
 <body>
-    <h2>How well do you know</h2> 
-    <h1>7 RINGS?</h1>
-    <h2>Press Any Key To Start</h2>
+    <div class="container-fluid">
+        <!-- left title bar/scores -->
+        <div class="row">
+            <div class="col-lg-2 ml-2 mt-3">
+                <!-- Logo -->
+                <div class="row">
+                    <div class="col">
+                        <img class="img-fluid" src="assets/Images/7rings_LOGO.png" alt="7 Rings by Ariana Grande Logo">
+                    </div>
+                </div>
+                <!-- rounds -->
+                <div class="row">
+                    <div class="col mt-3 text-center">
+                        <div class="secondary-header">rounds</div>
+                    </div>
+                </div>
 
-    <!-- This is where user will see the lyric appear -->
+                <div class="row">
+                    <div class="col text-center">
+                        <div class="secondary-content" id="round"></div>
+                    </div>
+                </div>
+                <!-- guesses left -->
+                <div class="row">
+                    <div class="col mt-3 text-center">
+                        <div class="secondary-header">guesses left</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <div class="secondary-content" id="guesses-remaining"></div>
+                    </div>
+                </div>
+                <!--  wins  -->
+                <div class="row">
+                    <div class="col mt-3 text-center">
+                        <div class="secondary-header">wins</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <div class="secondary-content" id="wins"></div>
+                    </div>
+                </div>
+                <!-- reset button: **DEV NOTE** Was planning to add reset button to restart game -->
+                <!-- <div class="row">
+                    <div class="col text-center">
+                        <div class="btn secondary-content" role="button">start over</div>
+                    </div>
+                </div> -->
+            </div>
 
-    <div class="hint-lyric"></div>
+            <!-- game lives here -->
+            <div class="col-lg-8 mt-5">
+                <div class="row d-flex justify-content-center mt-3">
+                    <div class="secondary-header">
+                        <h2 class="question">ur hint</h2>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center mb-5">
+                    <div class="text-center" id="hint-lyric"></div>
+                </div>
+                <div class="row d-flex justify-content-center">
+                    <div class="secondary-header">
+                        <h2 class="question">missing lyric?</h2>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center text-nowrap">
+                    <div id="missing-word"></div>
+                </div>
 
-    <h3>What is the missing lyric?</h3>
-    <div id="displayed-word"></div>
+                <div class="row d-flex justify-content-center mt-3">
+                    <div class="box p-3 text-center">
+                        <h1 class="guesses-header">ur guesses</h1>
+                        <div id="picked-letters"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- game instructions -->
+            <div class="col">
+                <div class="row mr-2 mt-5">
+                    <div class="col text-right">
+                        <h1 class="secondary-header">instructions</h1>
+                    </div>
+                </div>
+                <div class="row mr-2">
+                    <div class="col text-right">
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam sequi incidunt, corporis pariatur rem aspernatur accusamus libero quibusdam, ab.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
 
-    <div id="picked-letters"></div>
+        <div id="picked-letters"></div>
+    </container>
+
+
+    <!-- JavaScript Below -->
+    <script src="./assets/JavaScript/game.js"></script>
 
 </body>
+
 </html>
