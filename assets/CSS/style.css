@@ -1,5 +1,5 @@
 body {
-    background: #29002f url('assets/images/backgroundidea2.png');
+    background: url("/assets/backgroundidea2.png");
     font-family: 'Roboto Condensed', sans-serif;
 }
 
