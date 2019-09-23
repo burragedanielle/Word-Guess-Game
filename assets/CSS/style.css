@@ -5,13 +5,20 @@ body {
 
 p {
     color: #1a002f;
-    font-size: 1em;
+    font-size: .9em;
     line-height: 1.25em;
+}
+
+.primary-header {
+    font-size: 2em;
+    color: rgba(142, 240, 255, .9);
+    font-style: italic;
+    text-shadow: 3px 3px #29002f;
 }
 
 .secondary-header {
     font-size: 2em;
-    color: rgba(142, 240, 255, .9);
+    color: #f5bbf7;
     font-style: italic;
     text-shadow: 3px 3px #29002f;
 }

@@ -42,6 +42,30 @@ var lyrics = [
         hintLyric: "Write my own XXXXXX like I write what I sing, yeah"
     },
 
+    {
+        missing: "stop",
+        hintLyric: "My wrist, XXXX watchin'"
+    },
+
+    {
+        missing: "neck",
+        hintLyric: "My XXXX, is flossin'"
+    },
+
+    {
+        missing: "gloss",
+        hintLyric: "Make big deposits, my XXXXX is poppin'"
+    },
+
+    {
+        missing: "hair",
+        hintLyric: "You like my XXXX? Gee, thanks! Just bought it"
+    },
+
+    {
+        missing: "like",
+        hintLyric: "I see it, I XXXX it, I want it, I got it"
+    },
 
 ]
 
@@ -149,10 +173,15 @@ document.onkeyup = function(event) {
 
         //if user guesses all words right
         if (wordTokens.indexOf(" _ ") === -1) {
-            alert("It feels so good to be successful! You Won!")
             round++
             wins++
             clearBoard();
-        }           
+        }  
+
+        else if (wordTokens.indexOf(" _ ") === -1 && round >= lyrics.length){
+            alert("It feels so good to be successful! You Won!");
+        }
+ 
     }
+
 }
